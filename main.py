@@ -4,7 +4,7 @@ import random
 
 app = FastAPI(title="Safariai AI Scanner")
 
-# Serve index.html op de homepage
+# Laat index.html zien op de homepage
 @app.get("/")
 async def home():
     return FileResponse("index.html")  # index.html moet in dezelfde map staan als main.py
