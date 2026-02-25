@@ -4,10 +4,10 @@ import random
 
 app = FastAPI(title="Safariai AI Scanner")
 
-# Laat jouw HTML-bestand zien op de homepage
+# Serve de homepage met jouw HTML-bestand
 @app.get("/")
 async def home():
-    return FileResponse("html")  # gebruik hier de naam van jouw HTML bestand
+    return FileResponse("html.html")  # LET OP: gebruik de volledige naam incl. .html
 
 # Dummy AI endpoint
 labels = ["leeuw", "olifant", "neushoorn", "cheeta", "giraffe", "buffel", "andere"]
