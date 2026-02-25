@@ -1,32 +1,31 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8">
     <title>Safariai Dier Herkenning AI</title>
 </head>
 <body>
-    <h2>Upload een foto van een dier</h2>
-    <input type="file" id="fileInput"/>
-    <button onclick="upload()">Herken dier</button>
-    <p id="result"></p>
+<h2>Upload een foto van een dier</h2>
+<input type="file" id="fileInput"/>
+<button onclick="upload()">Herken dier</button>
+<p id="result"></p>
 
-    <script>
-    async function upload() {
-        const fileInput = document.getElementById('fileInput');
-        const file = fileInput.files[0];
-        if(!file){ alert("Selecteer eerst een foto!"); return; }
+<script>
+async function upload() {
+    const fileInput = document.getElementById('fileInput');
+    const file = fileInput.files[0];
+    if(!file){ alert("Selecteer eerst een foto!"); return; }
 
-        const formData = new FormData();
-        formData.append('file', file);
+    const formData = new FormData();
+    formData.append('file', file);
 
-        const response = await fetch('https://safariai2.onrender.com/predict/', {
-            method: 'POST',
-            body: formData
-        });
+    const response = await fetch('/predict/', {
+        method: 'POST',
+        body: formData
+    });
 
-        const data = await response.json();
-        document.getElementById('result').innerText = "Dit is waarschijnlijk een: " + data.predicted_dier;
-    }
-    </script>
+    const data = await response.json();
+    document.getElementById('result').innerText = "Dit is waarschijnlijk een: " + data.predicted_dier;
+}
+</script>
 </body>
 </html>
